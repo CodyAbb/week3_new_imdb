@@ -38,6 +38,13 @@ class Star
     return map_stars(stars)
   end
 
+  def update()
+    sql = "UPDATE stars SET first_name = $1, second_name =$2
+    WHERE id = $3"
+    values = [@first_name, @second_name, @id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.map_stars(star_data)
     result = star_data.map { |star| Star.new(star) }
     return result
