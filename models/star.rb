@@ -45,6 +45,14 @@ class Star
     SqlRunner.run(sql, values)
   end
 
+  def delete()
+    sql = "DELETE FROM stars WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+
+
   def self.map_stars(star_data)
     result = star_data.map { |star| Star.new(star) }
     return result
